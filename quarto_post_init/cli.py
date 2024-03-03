@@ -1,8 +1,12 @@
 import logging
 
+from importlib import resources
+
 import click
 
 from .logconfig import DEFAULT_LOG_FORMAT, logging_config
+
+from . import templates
 
 
 @click.group()
@@ -28,10 +32,13 @@ def cli(log_format, log_level, log_file):
     logging_config(log_format, log_level, log_file)
 
 
-@cli.command(name="command")
-@click.argument("example")
-def first_command(example):
+@cli.command(name="post")
+def post():
     "Command description goes here"
 
-    click.echo("Here is some output")
-    logging.info("Here's some log output")
+    tmpls = resources.files(templates)
+    for p in tmpls.iterdir():
+        logging.info("Checking for template in %s", p)
+        if (p / "cookiecutter.json").is_file():
+            logging.info("cookiecutter template: %s", p)
+            click.echo(f"cookiecutter template: {str(p)}")
