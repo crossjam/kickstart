@@ -13,6 +13,8 @@ dependencies = [
     "click",
     "python-slugify",
     "questionary",
+    "cookiecutter",
+    "jinja2_time",
 ]
 
 [project.urls]
