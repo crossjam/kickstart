@@ -1,7 +1,8 @@
 {
-    "post_slug": null,
+    "_extensions": ["quarto_post_init.extensions.SlugifyExtension", "jinja2_time.TimeExtension"],
     "post_title": null,
-    "post_date": null,
+    "post_slug": "{{ cookiecutter['post_title'] | slugify(separator='_') }}",
+    "post_date": "{% now 'utc', '%Y-%m-%d' %}",
     "post_categories": null,
     "post_author": null,
     "post_toc": true

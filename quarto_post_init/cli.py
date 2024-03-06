@@ -3,6 +3,7 @@ import logging
 from importlib import resources
 
 import click
+from cookiecutter.main import cookiecutter
 
 from .logconfig import DEFAULT_LOG_FORMAT, logging_config
 
@@ -34,11 +35,15 @@ def cli(log_format, log_level, log_file):
 
 @cli.command(name="post")
 def post():
-    "Command description goes here"
+    """Create a new quarto post, from a template"""
 
-    tmpls = resources.files(templates)
-    for p in tmpls.iterdir():
+    cookiecutters = []
+
+    for p in resources.files(templates).iterdir():
         logging.info("Checking for template in %s", p)
         if (p / "cookiecutter.json").is_file():
             logging.info("cookiecutter template: %s", p)
-            click.echo(f"cookiecutter template: {str(p)}")
+            cookiecutters.append(p)
+
+    click.echo(f"cookiecutter templates: {[str(v.name) for v in cookiecutters]}")
+    cookiecutter(str(cookiecutters[0]))
