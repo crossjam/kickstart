@@ -5,6 +5,8 @@ from importlib import resources
 import click
 from cookiecutter.main import cookiecutter
 
+import questionary
+
 from .logconfig import DEFAULT_LOG_FORMAT, logging_config
 
 from . import templates
@@ -37,13 +39,18 @@ def cli(log_format, log_level, log_file):
 def post():
     """Create a new quarto post, from a template"""
 
-    cookiecutters = []
+    cookiecutters = {}
 
     for p in resources.files(templates).iterdir():
         logging.info("Checking for template in %s", p)
         if (p / "cookiecutter.json").is_file():
             logging.info("cookiecutter template: %s", p)
-            cookiecutters.append(p)
+            cookiecutters[p.name] = p
 
-    click.echo(f"cookiecutter templates: {[str(v.name) for v in cookiecutters]}")
-    cookiecutter(str(cookiecutters[0]))
+    click.echo(f"cookiecutter templates: {[v for v in cookiecutters.keys()]}")
+
+    choice = questionary.select(
+        "Choose a post template", choices=list(cookiecutters.keys())
+    ).ask()
+
+    cookiecutter(str(cookiecutters[choice]))
