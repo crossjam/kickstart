@@ -1,0 +1,10 @@
+{
+    "_extensions": ["quarto_post_init.extensions.SlugifyExtension", "jinja2_time.TimeExtension"],
+    "notebook_title": null,
+    "notebook_slug": "{{ cookiecutter['notebook_title'] | slugify(separator='_') }}",
+    "notebook_date": "{% now 'utc', '%Y-%m-%d' %}",
+    "notebook_categories": null,
+    "notebook_author": null,
+    "notebook_toc": true,
+    "jupyter_kernel": "python3"
+}

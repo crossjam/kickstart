@@ -1,8 +1,15 @@
 import logging
 
+from importlib import resources
+
 import click
+from cookiecutter.main import cookiecutter
+
+import questionary
 
 from .logconfig import DEFAULT_LOG_FORMAT, logging_config
+
+from . import templates
 
 
 @click.group()
@@ -28,10 +35,22 @@ def cli(log_format, log_level, log_file):
     logging_config(log_format, log_level, log_file)
 
 
-@cli.command(name="command")
-@click.argument("example")
-def first_command(example):
-    "Command description goes here"
+@cli.command(name="post")
+def post():
+    """Create a new quarto post, from a template"""
 
-    click.echo("Here is some output")
-    logging.info("Here's some log output")
+    cookiecutters = {}
+
+    for p in resources.files(templates).iterdir():
+        logging.info("Checking for template in %s", p)
+        if (p / "cookiecutter.json").is_file():
+            logging.info("cookiecutter template: %s", p)
+            cookiecutters[p.name] = p
+
+    click.echo(f"cookiecutter templates: {[v for v in cookiecutters.keys()]}")
+
+    choice = questionary.select(
+        "Choose a post template", choices=list(cookiecutters.keys())
+    ).ask()
+
+    cookiecutter(str(cookiecutters[choice]))

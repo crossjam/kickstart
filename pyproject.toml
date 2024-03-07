@@ -11,7 +11,10 @@ classifiers = [
 ]
 dependencies = [
     "click",
-    "python-slugify"
+    "python-slugify",
+    "questionary",
+    "cookiecutter",
+    "jinja2_time",
 ]
 
 [project.urls]
@@ -21,7 +24,7 @@ Issues = "https://github.com/crossjam/quarto-post-init/issues"
 CI = "https://github.com/crossjam/quarto-post-init/actions"
 
 [project.entry-points.console_scripts]
-quarto-post-init = "quarto_post_init.cli:cli"
+qpi = "quarto_post_init.cli:cli"
 
 [project.optional-dependencies]
 test = ["pytest"]

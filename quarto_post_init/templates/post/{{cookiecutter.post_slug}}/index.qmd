@@ -1,0 +1,11 @@
+---
+title: {{ cookiecutter.post_title }}
+author: {{ cookiecutter.post_author }}
+date: {{ cookiecutter.post_date }}
+categories: []
+code-block-border-left: true
+code-line-numbers: true
+format:
+  html:
+   toc: {{ cookiecutter.post_toc }}
+---
