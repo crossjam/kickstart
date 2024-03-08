@@ -36,7 +36,8 @@ def cli(log_format, log_level, log_file):
 
 
 @cli.command(name="post")
-def post():
+@click.option("--replay / --no-replay", default=False)
+def post(replay):
     """Create a new quarto post, from a template"""
 
     cookiecutters = {}
@@ -53,4 +54,22 @@ def post():
         "Choose a post template", choices=list(cookiecutters.keys())
     ).ask()
 
-    cookiecutter(str(cookiecutters[choice]))
+    cookiecutter(str(cookiecutters[choice]), replay=replay)
+
+
+@cli.command(name="templates")
+def list_templates():
+    """List the available templates"""
+
+    cookiecutters = {}
+
+    for p in resources.files(templates).iterdir():
+        logging.info("Checking for template in %s", p)
+        if (p / "cookiecutter.json").is_file():
+            logging.info("cookiecutter template: %s", p)
+            cookiecutters[p.name] = p
+
+    click.echo(f"{len(cookiecutters)} templates")
+
+    for name, location in cookiecutters.items():
+        click.echo(f"\t{name} -> {str(location)}")
