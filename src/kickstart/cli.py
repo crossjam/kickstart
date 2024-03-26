@@ -30,15 +30,15 @@ from . import templates
     default=None,
 )
 def cli(log_format, log_level, log_file):
-    "Initialize a directory as a post for Quarto"
+    """A tool for kickstarting web content writing"""
 
     logging_config(log_format, log_level, log_file)
 
 
-@cli.command(name="post")
+@cli.command(name="init")
 @click.option("--replay / --no-replay", default=False)
-def post(replay):
-    """Create a new quarto post, from a template"""
+def init(replay):
+    """Initialize new content from a cookiecutter template"""
 
     cookiecutters = {}
 

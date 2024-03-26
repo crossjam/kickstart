@@ -1,5 +1,5 @@
 {
-    "_extensions": ["quarto_post_init.extensions.SlugifyExtension", "jinja2_time.TimeExtension"],
+    "_extensions": ["kickstart.extensions.SlugifyExtension", "jinja2_time.TimeExtension"],
     "notebook_title": null,
     "notebook_slug": "{{ cookiecutter['notebook_title'] | slugify(separator='_') }}",
     "notebook_date": "{% now 'utc', '%Y-%m-%d' %}",

@@ -1,7 +1,7 @@
 [project]
-name = "quarto-post-init"
+name = "kickstart"
 version = "0.1"
-description = "Personal tool to create Quarto post directories"
+description = "Personal tool to kickstart writing for the web"
 readme = "README.md"
 authors = [{name = "Brian M. Dennis"}]
 license = {text = "MIT"}
@@ -18,13 +18,13 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/crossjam/quarto-post-init"
-Changelog = "https://github.com/crossjam/quarto-post-init/releases"
-Issues = "https://github.com/crossjam/quarto-post-init/issues"
-CI = "https://github.com/crossjam/quarto-post-init/actions"
+Homepage = "https://github.com/crossjam/kickstart"
+Changelog = "https://github.com/crossjam/kickstart/releases"
+Issues = "https://github.com/crossjam/kickstart/issues"
+CI = "https://github.com/crossjam/kickstart/actions"
 
 [project.entry-points.console_scripts]
-qpi = "quarto_post_init.cli:cli"
+kickstart = "kickstart.cli:cli"
 
 [project.optional-dependencies]
 test = ["pytest"]
