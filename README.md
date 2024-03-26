@@ -1,9 +1,9 @@
-# quarto-post-init
+# kickstart
 
-[![PyPI](https://img.shields.io/pypi/v/quarto-post-init.svg)](https://pypi.org/project/quarto-post-init/)
-[![Changelog](https://img.shields.io/github/v/release/crossjam/quarto-post-init?include_prereleases&label=changelog)](https://github.com/crossjam/quarto-post-init/releases)
-[![Tests](https://github.com/crossjam/quarto-post-init/workflows/Test/badge.svg)](https://github.com/crossjam/quarto-post-init/actions?query=workflow%3ATest)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/crossjam/quarto-post-init/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/kickstart.svg)](https://pypi.org/project/kickstart/)
+[![Changelog](https://img.shields.io/github/v/release/crossjam/kickstart?include_prereleases&label=changelog)](https://github.com/crossjam/kickstart/releases)
+[![Tests](https://github.com/crossjam/kickstart/workflows/Test/badge.svg)](https://github.com/crossjam/kickstart/actions?query=workflow%3ATest)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/crossjam/kickstart/blob/master/LICENSE)
 
 Initialize a directory as a post for Quarto
 
@@ -11,13 +11,13 @@ Initialize a directory as a post for Quarto
 
 Install this tool using `pip`:
 
-    pip install quarto-post-init
+    pip install git+https://github.com/crossjam/kickstart
 
 ## Usage
 
 For help, run:
 
-    quarto-post-init --help
+    kickstart --help
 
 You can also use:
 
@@ -27,7 +27,7 @@ You can also use:
 
 To contribute to this tool, first checkout the code. Then create a new virtual environment:
 
-    cd quarto-post-init
+    cd kickstart p
     python -m venv venv
     source venv/bin/activate
 
