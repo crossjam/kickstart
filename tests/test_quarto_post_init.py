@@ -1,5 +1,5 @@
 from click.testing import CliRunner
-from quarto_post_init.cli import cli
+from kickstart.cli import cli
 
 
 def test_version():
